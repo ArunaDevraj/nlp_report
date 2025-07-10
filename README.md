@@ -73,10 +73,6 @@ Examples of valid input:
 
     Fetches relevant data using frappe.db.get_all().
 
-🔐 Security
-
-This endpoint allows guest access (@frappe.whitelist(allow_guest=True)), so restrict public access if sensitive data is involved.
-
 
 
 📄 License
