@@ -32,7 +32,7 @@ nlp_report/
     Clone the app into your frappe-bench/apps folder:
 
 cd ~/frappe-bench/apps
-git clone https://github.com/yourusername/nlp_report.git
+git clone https://github.com/ArunaDevraj/nlp_report.git
 
     Install the app:
 
@@ -67,7 +67,7 @@ Examples of valid input:
 
 ⚙️ Backend Logic (api.py)
 
-    Uses parse_command_with_llm() to convert input into structured ERPNext query.
+    Uses parse_command_with_llm() to convert input into a structured ERPNext query.
 
     Supports basic NLP using Python regex.
 
