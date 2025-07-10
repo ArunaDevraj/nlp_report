@@ -7,7 +7,7 @@ import re
 
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def smart_report(command):
     try:
         # Log incoming command
