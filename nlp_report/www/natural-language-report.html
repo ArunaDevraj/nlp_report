@@ -1,0 +1,41 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+<div class="container">
+    <h2>Natural Language Report Generator</h2>
+    <input type="text" class="form-control" id="command" placeholder="Enter your command here..." />
+    <br/>
+    <button class="btn btn-primary" onclick="generateReport()">Generate Report</button>
+    <br/><br/>
+    <div id="report_result"></div>
+</div>
+
+<script>
+function generateReport() {
+    const command = document.getElementById("command").value;
+    frappe.call({
+        method: "nlp_report.api.smart_report",
+        args: { command },
+        callback: function(r) {
+            if (r.message.error) {
+                document.getElementById("report_result").innerHTML = `<div class="alert alert-danger">${r.message.error}</div>`;
+            } else {
+                let html = "<table class='table table-bordered'><tr>";
+                Object.keys(r.message[0] || {}).forEach(key => html += `<th>${key}</th>`);
+                html += "</tr>";
+                r.message.forEach(row => {
+                    html += "<tr>";
+                    Object.values(row).forEach(value => html += `<td>${value}</td>`);
+                    html += "</tr>";
+                });
+                html += "</table>";
+                document.getElementById("report_result").innerHTML = html;
+            }
+        }
+    });
+}
+</script>
+{% endblock %}
+
+
+

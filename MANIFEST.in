@@ -1,0 +1,5 @@
+include MANIFEST.in
+include requirements.txt
+include setup.py
+recursive-include nlp_report *
+recursive-exclude nlp_report *.pyc
